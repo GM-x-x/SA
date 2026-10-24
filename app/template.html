@@ -78,6 +78,11 @@ a{color:#8cc0ff}
 .card b{font-size:16px}.card .pills{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
 #chars{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .q2{margin-bottom:12px}
+#hp{position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);background:var(--panel);border-left:2px solid var(--ac);overflow:auto;z-index:10;box-shadow:-8px 0 24px rgba(0,0,0,.5)}
+#hp[hidden]{display:none}
+.hh{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:2px solid var(--line);position:sticky;top:0;background:var(--panel)}
+.hb{padding:4px 16px 24px}.hb h3{font-size:15px;margin:16px 0 6px}.hb h4{font-size:14px;margin:12px 0 4px}
+.hv{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
 @media(max-width:980px){main{padding:12px 12px 20px}.split{grid-template-columns:1fr}.list{max-height:none;flex-direction:row;overflow:auto;padding-bottom:6px}.item{min-width:200px;width:auto}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.pair{grid-template-columns:1fr}.total{margin-left:0;text-align:left}.tabs{margin-left:0}}
 </style></head><body><main>
 <header>
@@ -94,8 +99,9 @@ a{color:#8cc0ff}
   <div id="r2"></div>
 </div>
 </main>
+<aside id="hp" hidden></aside>
 <script>
-const PETS=__PETS__,CH=__CHARS__;
+const PETS=__PETS__,CH=__CHARS__,HIST=__HIST__;
 const byId=Object.fromEntries(PETS.map(p=>[p.id,p]));
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const S=['공격력','방어력','순발력','내구력'],SC=['#ff8a7a','#6fb7ff','#7ee0b0','#d9a6ff'];
@@ -106,6 +112,30 @@ const EL={'지':['#58c27d','#0c1a12'],'수':['#6fb7ff','#0a1a2c'],'화':['#ff8a7
 const FB='<div class="ph %C">이미지 없음</div>';
 function img(p,cls){const alt=esc(p.n);return p.img?`<img class="${cls}" alt="${alt}" src="${esc(p.img)}" loading="lazy" onerror="this.onerror=null;this.src='${esc(p.ext)}'">`:`<img class="${cls}" alt="${alt}" src="${esc(p.ext)}" loading="lazy" onerror="this.outerHTML='${FB.replace('%C',cls+' ph')}'">`}
 function attrs(a){const out=[];String(a||'').replace(/([지수화풍])\s*\(Lv\.(\d+)\)/g,(m,e,l)=>{const c=EL[e];out.push(`<span class="chip2" style="background:${c[0]};color:${c[1]};font-weight:700">${e} Lv.${l}</span>`)});return out.join('')||`<span class="chip2">${esc(a||'속성 정보 없음')}</span>`}
+/* 변화 기록 화면: 로컬 빌드(index.local.html)에서만 HIST 가 채워진다 */
+function histBtn(p){if(!HIST)return'';const n=(HIST.events[p.id]||[]).length;return `<span style="flex:1"></span><button class="pill" data-hist="${p.id}">변화 기록 ${n}건</button>`}
+const fmtAt=a=>{const m=String(a).match(/\d+-(\d+)-(\d+)T(\d+):(\d+)/);return m?`${m[1]}-${m[2]} ${m[3]}:${m[4]}`:a};
+const sg=n=>(n>0?'+':'')+n;
+function evLine(e){
+  const st=r=>`공${r.atk} 방${r.def} 순${r.agi} 내${r.hp}`;
+  const d=e.delta?`공${sg(e.delta.atk)} 방${sg(e.delta.def)} 순${sg(e.delta.agi)} 내${sg(e.delta.hp)}`:'';
+  switch(e.type){
+    case 'level_up':{const x=e.expected_by_growth,pl=e.per_level;return `<b>${esc(e.nick)}</b> Lv${e.lv_from}→${e.lv_to} · ${d}<div class="tag">성장률 기대 공${x.atk} 방${x.def} 순${x.agi} 내${x.hp}${e.levels>1?` · 레벨당 공${pl.atk} 방${pl.def} 순${pl.agi} 내${pl.hp}`:''}${e.rank_from!==e.rank_to?` · 순위 ${e.rank_from}→${e.rank_to}`:''}</div>`}
+    case 'enter':return `<b>${esc(e.nick)}</b> 순위권 진입 · ${e.rank}위 Lv${e.to.lv} ${st(e.to)}`;
+    case 'exit':return `<b>${esc(e.nick)}</b> 순위권 이탈 · 이전 ${e.rank_from}위 Lv${e.from.lv} ${st(e.from)}`;
+    case 'rank_move':return `<b>${esc(e.nick)}</b> 순위 ${e.rank_from}→${e.rank_to}`;
+    case 'stat_change':return `<b>${esc(e.nick)}</b> Lv${e.lv_to} 스탯 변화 · ${d}`;
+    case 'level_down':return `<b>${esc(e.nick)}</b> Lv${e.lv_from}→${e.lv_to} 레벨 하락 · ${d}`;
+  }
+  return esc(e.type)}
+function openHist(id){
+  const p=byId[id],ev=(HIST.events[id]||[]).slice().reverse(),tl=HIST.timeline[id]||{};
+  const evh=ev.length?ev.map(e=>`<div class="hv"><span class="tag">${fmtAt(e.at)}</span> ${evLine(e)}</div>`).join(''):'<div class="mut">아직 기록된 변화가 없습니다.</div>';
+  const tlh=Object.keys(tl).map(n=>`<h4>${esc(n)}</h4><table class="pt num"><tr><th>시각</th><th>Lv</th><th>공</th><th>방</th><th>순</th><th>내</th></tr>${tl[n].map(r=>`<tr><td>${fmtAt(r[0])}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td></tr>`).join('')}</table>`).join('');
+  $('#hp').innerHTML=`<div class="hh"><b>${esc(p.n)} · 변화 기록</b><button class="pill" id="hclose">닫기</button></div><div class="hb"><h3>변화 이력</h3>${evh}<h3>닉네임별 시계열</h3>${tlh||'<div class="mut">기록 없음</div>'}</div>`;
+  $('#hp').hidden=false}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-hist]');if(b&&HIST)openHist(+b.dataset.hist);if(e.target.id==='hclose')$('#hp').hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#hp').hidden=true});
 let sel=null,results=[],projLv='';
 function drawProj(){
   const p=byId[sel],el=$('#pr');if(!p||!el)return;
@@ -137,8 +167,8 @@ function renderDetail(){
       <div class="pj"><div><label for="pl">현재 레벨</label><input id="pl" type="number" inputmode="numeric" min="1" max="150" placeholder="1~150" value="${projLv}"></div>${S.map((s,i)=>`<div><label for="ps${i}">현재 ${s.slice(0,2)}</label><input id="ps${i}" type="number" inputmode="numeric" min="0" placeholder="${s.slice(0,2)}"></div>`).join('')}</div>
       <div id="pr"></div></div>
   </div>
-  <div class="riders"><span class="lab">탑승 가능 캐릭터</span>${p.ride?(rd.length?rd.map(c=>`<button class="pill" data-ride="${esc(c)}">${esc(c)}</button>`).join(''):'<span class="mut">탑승 캐릭터 정보 없음(이름 불일치 가능)</span>'):'<span class="mut">탑승 불가 펫</span>'}</div>`}
-{const _r=renderDetail;renderDetail=function(){_r();drawProj()}}
+  <div class="riders"><span class="lab">탑승 가능 캐릭터</span>${p.ride?(rd.length?rd.map(c=>`<button class="pill" data-ride="${esc(c)}">${esc(c)}</button>`).join(''):'<span class="mut">탑승 캐릭터 정보 없음(이름 불일치 가능)</span>'):'<span class="mut">탑승 불가 펫</span>'}${histBtn(p)}</div>`}
+{const _r=renderDetail;renderDetail=function(){_r();drawProj();$('#hp').hidden=true}}
 $('#detail').addEventListener('input',e=>{if(e.target.closest('#proj'))drawProj()});
 function run(){results=find($('#q').value).slice(0,50);sel=results.length?results[0].id:null;renderList();renderDetail()}
 $('#q').oninput=run;

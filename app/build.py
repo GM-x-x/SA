@@ -37,6 +37,26 @@ for n, cs in miss.items(): print(' ', n, '←', ', '.join(cs))
 print('동명 펫(복수 id 연결):', sorted(n for n, i in by_name.items() if len(i) > 1))
 print('이미지 누락:', sum(1 for p in P if not p['img']), '/', len(P))
 tpl = open(f'{B}/template.html', encoding='utf-8').read()
-out = tpl.replace('__PETS__', json.dumps(P, ensure_ascii=False, separators=(',', ':'))) \
-         .replace('__CHARS__', json.dumps(C, ensure_ascii=False, separators=(',', ':')))
-open(f'{R}/index.html', 'w', encoding='utf-8').write(out)  # 저장소 루트 = 사이트 첫 화면
+J = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':'))
+base = tpl.replace('__PETS__', J(P)).replace('__CHARS__', J(C))
+
+# 공개용: 기록 화면 없음
+public = base.replace('__HIST__', 'null')
+assert '__HIST__' not in public and '"timeline"' not in public
+open(f'{R}/index.html', 'w', encoding='utf-8').write(public)  # 저장소 루트 = 사이트 첫 화면
+
+# 로컬 전용: 변화 기록 화면 포함 (index.local.html 은 .gitignore 로 저장소에 올라가지 않는다)
+H = f'{R}/history'
+hist = None
+if os.path.isdir(f'{H}/changes'):
+    ev = collections.defaultdict(list)
+    for f in sorted(os.listdir(f'{H}/changes')):
+        c = json.load(open(f'{H}/changes/{f}', encoding='utf-8'))
+        for ch in c['pets']:
+            for e in ch['events']:
+                ev[str(ch['id'])].append(dict(e, at=c['to']))
+    tl = json.load(open(f'{H}/timeline.json', encoding='utf-8')) if os.path.exists(f'{H}/timeline.json') else {}
+    hist = dict(events=ev, timeline=tl)
+    n = sum(len(v) for v in ev.values())
+    print('로컬 기록 화면: 이벤트', n, '건 /', len(ev), '종, 시계열', len(tl), '종')
+open(f'{R}/index.local.html', 'w', encoding='utf-8').write(base.replace('__HIST__', J(hist)))
