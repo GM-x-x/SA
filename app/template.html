@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>스톤에이지 펫·탑승 검색</title>
+<style>
+:root{--bg:#12151c;--panel:#1c212b;--panel2:#232a38;--line:#2c3444;--fg:#f2f4f8;--mut:#aab3c2;--ac:#ffb020;--ink:#12151c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 "Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
+.num{font-variant-numeric:tabular-nums}
+main{max-width:1280px;margin:0 auto;padding:14px 28px 12px}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+h1{font-size:20px;font-weight:900;letter-spacing:-.02em;margin:0}
+.sub{font-size:13px;color:var(--mut)}
+.tabs{display:flex;gap:6px;margin-left:auto}
+.tabs button{padding:7px 16px;border-radius:999px;border:2px solid #3a4252;background:transparent;color:var(--fg);font-size:14px;font-weight:500;font-family:inherit;cursor:pointer}
+.tabs button.on{background:var(--ac);border-color:var(--ac);color:var(--ink);font-weight:700}
+.tabs button:focus-visible,.item:focus-visible,.chip:focus-visible,.pill:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.search{display:flex;align-items:center;gap:10px;height:46px;padding:0 16px;background:var(--panel);border:2px solid var(--ac);border-radius:12px;margin-bottom:12px}
+.search label{font-size:13px;color:var(--mut);font-weight:500;white-space:nowrap}
+.search input{flex:1;min-width:0;background:transparent;border:0;color:var(--fg);font-size:20px;font-weight:700;font-family:inherit;outline:0}
+.search input::placeholder{color:#7f8aa0;font-weight:500}
+.search .cnt{font-size:13px;color:var(--mut);white-space:nowrap}
+.split{display:grid;grid-template-columns:230px minmax(0,1fr);gap:16px;align-items:start}
+.list{display:flex;flex-direction:column;gap:8px;max-height:calc(100vh - 150px);overflow:auto;padding:2px}
+.item{display:flex;gap:10px;align-items:center;padding:8px 10px;background:var(--panel);border:2px solid var(--line);border-radius:12px;cursor:pointer;color:inherit;text-align:left;font-family:inherit;width:100%}
+.item.on{background:var(--panel2);border-color:var(--ac)}
+.item b{font-size:15px;display:block;line-height:1.3}
+.item .t{font-size:12px;color:var(--mut)}.item.on .t{color:var(--ac)}
+.thumb{width:44px;height:44px;flex:none;object-fit:contain;border-radius:8px;background:var(--bg);border:2px solid var(--line)}
+.ph{display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--mut);border:2px dashed #4a5366}
+.detail{display:flex;flex-direction:column;gap:10px;min-width:0}
+.head{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.hero{width:84px;height:84px;flex:none;object-fit:contain;border-radius:12px;background:var(--panel);border:2px solid var(--line)}
+.name{font-size:30px;font-weight:900;letter-spacing:-.02em;line-height:1.1;margin:0 0 8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip2{padding:4px 10px;border-radius:7px;background:var(--line);font-size:13px}
+.total{margin-left:auto;text-align:right}
+.total .l{font-size:12px;color:var(--mut);font-weight:500}.total .v{font-size:40px;font-weight:900;color:var(--ac);line-height:1}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat{padding:10px 14px;background:var(--panel);border:2px solid var(--line);border-radius:12px}
+.stat .n{font-size:14px;font-weight:700}
+.two{display:flex;gap:16px;align-items:flex-end;margin-top:2px}
+.stat .k{font-size:11px;color:var(--mut)}
+.stat .b{font-size:30px;font-weight:900;line-height:1.1}
+.stat .g{font-size:22px;font-weight:700;color:var(--ac);line-height:1.2}
+.bar{height:6px;border-radius:3px;background:var(--line);margin-top:6px}.bar i{display:block;height:6px;border-radius:3px;background:var(--ac)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.box{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:10px 14px}
+.box h3{font-size:15px;margin:0 0 6px}
+.rk{width:100%;border-collapse:collapse;font-size:16px}
+.rk th{font-size:12px;color:var(--mut);font-weight:500;text-align:right;padding:4px 0;border-bottom:2px solid var(--line)}
+.rk th:first-child,.rk th:nth-child(2),.rk td:first-child,.rk td:nth-child(2){text-align:left}
+.rk td{text-align:right;padding:6px 0;border-bottom:1px solid var(--line)}
+.rk tr:last-child td{border-bottom:0}
+.rk td:nth-child(2){font-weight:700;padding-right:6px;word-break:break-all}
+.hi{color:var(--ac);font-weight:700}
+.medal{display:inline-flex;width:24px;height:24px;border-radius:50%;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--ink)}
+.m1{background:#ffb020}.m2{background:#c9d1de}.m3{background:#d08a4c}.m4{background:var(--line);color:var(--fg)}
+.pj{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:6px}
+.pj label{display:block;font-size:11px;color:var(--mut);margin-bottom:2px;white-space:nowrap}
+.pj input{width:100%;height:34px;padding:0 8px;border-radius:8px;border:2px solid #3a4252;background:var(--bg);color:var(--fg);font-size:16px;font-weight:700;font-family:inherit}
+.pj input:focus{border-color:var(--ac)}
+.pt{width:100%;border-collapse:collapse;font-size:16px}
+.pt th{font-size:12px;color:var(--mut);font-weight:500;text-align:right;padding:3px 0;border-bottom:2px solid var(--line)}
+.pt td{text-align:right;padding:5px 0;border-bottom:1px solid var(--line)}
+.pt th:first-child,.pt td:first-child{text-align:left;font-size:12px;color:var(--mut);font-weight:500}
+.pt tr:last-child td{border-bottom:0}
+.pt .ex{color:var(--ac);font-weight:900;font-size:20px}
+.pt .df{font-size:12px;color:var(--mut)}
+.pnote{font-size:11px;color:var(--mut);margin-top:4px;line-height:1.35}
+.riders{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.riders .lab{font-size:13px;color:var(--mut);font-weight:500;margin-right:4px}
+.pill,.chip{padding:4px 11px;border-radius:999px;background:var(--line);color:var(--fg);border:0;font-size:13px;font-weight:400;font-family:inherit;cursor:pointer}
+.chip.on{background:var(--ac);color:var(--ink);font-weight:700}
+.pill.warn{background:transparent;border:2px solid #ff8a7a;color:#ffb3a8;cursor:default}
+.mut{color:var(--mut)}.tag{font-size:12px;color:var(--mut)}
+a{color:#8cc0ff}
+.card{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px}
+.card b{font-size:16px}.card .pills{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+#chars{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.q2{margin-bottom:12px}
+.foot{margin:10px 0 0;font-size:11px;color:var(--mut);line-height:1.35}
+@media(max-width:980px){main{padding:12px 12px 20px}.split{grid-template-columns:1fr}.list{max-height:none;flex-direction:row;overflow:auto;padding-bottom:6px}.item{min-width:200px;width:auto}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.pair{grid-template-columns:1fr}.total{margin-left:0;text-align:left}.tabs{margin-left:0}}
+</style></head><body><main>
+<header>
+  <h1>스톤에이지 펫·탑승 검색</h1><span class="sub">환수강림 LIGHT · 사내용</span>
+  <div class="tabs"><button id="t1" class="on">펫 검색</button><button id="t2">탑승 캐릭터 검색</button></div>
+</header>
+<div id="v1">
+  <div class="search"><label for="q">펫 이름</label><input id="q" placeholder="예: 흑풍, 얼룩우리" autofocus autocomplete="off"><span class="cnt" id="cnt"></span></div>
+  <div class="split"><div class="list" id="list"></div><div class="detail" id="detail"></div></div>
+</div>
+<div id="v2" hidden>
+  <div id="chars"></div>
+  <div class="search q2"><label for="q2">검색</label><input id="q2" placeholder="캐릭터 또는 펫 이름" autocomplete="off"></div>
+  <div id="r2"></div>
+</div>
+<p class="foot">랭킹 닉네임은 게임 내 공개 랭킹 정보입니다. 사내 업무용으로만 사용하고 외부 공개·배포나 다른 개인정보와의 결합을 금지합니다. 출처: hwansoo.top · 막대는 전체 펫 중 해당 성장률 최댓값 대비 비율입니다.</p>
+</main>
+<script>
+const PETS=__PETS__,CH=__CHARS__;
+const byId=Object.fromEntries(PETS.map(p=>[p.id,p]));
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const S=['공격력','방어력','순발력','내구력'],SC=['#ff8a7a','#6fb7ff','#7ee0b0','#d9a6ff'];
+const ridersOf=id=>Object.keys(CH).filter(c=>CH[c].ids.some(g=>g.includes(id)));
+const dup={};PETS.forEach(p=>dup[p.n]=(dup[p.n]||0)+1);
+const GMAX=[0,1,2,3].map(i=>Math.max(...PETS.map(p=>p.g[i])));
+const EL={'지':['#58c27d','#0c1a12'],'수':['#6fb7ff','#0a1a2c'],'화':['#ff8a7a','#2c0e0a'],'풍':['#f2c94c','#2c2208']};
+const FB='<div class="ph %C">이미지 없음</div>';
+function img(p,cls){const alt=esc(p.n);return p.img?`<img class="${cls}" alt="${alt}" src="${esc(p.img)}" loading="lazy" onerror="this.onerror=null;this.src='${esc(p.ext)}'">`:`<img class="${cls}" alt="${alt}" src="${esc(p.ext)}" loading="lazy" onerror="this.outerHTML='${FB.replace('%C',cls+' ph')}'">`}
+function attrs(a){const out=[];String(a||'').replace(/([지수화풍])\s*\(Lv\.(\d+)\)/g,(m,e,l)=>{const c=EL[e];out.push(`<span class="chip2" style="background:${c[0]};color:${c[1]};font-weight:700">${e} Lv.${l}</span>`)});return out.join('')||`<span class="chip2">${esc(a||'속성 정보 없음')}</span>`}
+let sel=null,results=[],projLv='';
+function drawProj(){
+  const p=byId[sel],el=$('#pr');if(!p||!el)return;
+  projLv=$('#pl').value;const L=parseInt(projLv,10),okL=L>=1&&L<=150;
+  const avg=p.b.map((b,i)=>Math.round(b+p.g[i]*149));
+  const ex=p.b.map((_,i)=>{const v=$('#ps'+i).value;return okL&&v!==''&&+v>=0?Math.round(+v+p.g[i]*(150-L)):null});
+  const f=d=>d===0?'±0':(d>0?'+':'')+d;
+  el.innerHTML=`<table class="pt num"><tr><th></th>${S.map(s=>`<th>${s.slice(0,2)}</th>`).join('')}</tr>
+  <tr><td>내 펫 예상 (Lv150)</td>${ex.map(v=>`<td class="ex">${v===null?'—':v}</td>`).join('')}</tr>
+  <tr><td>평균 (초기치+성장률×149)</td>${avg.map(v=>`<td>${v}</td>`).join('')}</tr>
+  <tr><td>평균 대비</td>${ex.map((v,i)=>`<td class="df">${v===null?'':f(v-avg[i])}</td>`).join('')}</tr></table>
+  <div class="pnote">${projLv!==''&&!okL?'<b style="color:#ffb3a8">현재 레벨은 1~150 사이로 입력하세요.</b> ':''}예상 = 현재 스탯 + 성장률 × (150 − 현재 레벨). 랭킹 1,784건 기준 평균 오차: 공격·방어·순발 약 ±3, 내구 약 ±14 (개체별로 더 벗어날 수 있음)</div>`}
+function find(q){q=q.trim();return q?PETS.filter(p=>p.n.includes(q)):[]}
+function renderList(){
+  $('#cnt').textContent=results.length?`검색 결과 ${results.length}건`:'';
+  $('#list').innerHTML=results.map(p=>`<button class="item${p.id===sel?' on':''}" data-id="${p.id}">${img(p,'thumb')}<span><b>${esc(p.n)}</b><span class="t num">#${p.id}${dup[p.n]>1?' · 동명 '+dup[p.n]+'종':''} · 총성장률 ${p.tg}</span></span></button>`).join('')}
+function renderDetail(){
+  const p=byId[sel];
+  if(!p){$('#detail').innerHTML=$('#q').value.trim()?'<p class="mut">결과 없음</p>':'<p class="mut">펫 이름을 입력하면 초기 능력치, 성장률, 랭킹을 한눈에 볼 수 있습니다.</p>';return}
+  const stats=p.b.map((b,i)=>`<div class="stat"><div class="n" style="color:${SC[i]}">${S[i]}</div><div class="two"><div><div class="k">초기치</div><div class="b num">${b}</div></div><div><div class="k">성장률</div><div class="g num">${p.g[i]}</div></div></div><div class="bar"><i style="width:${Math.min(100,p.g[i]/GMAX[i]*100).toFixed(0)}%"></i></div></div>`).join('');
+  const mx=[2,3,4,5].map(c=>Math.max(...p.rk.map(r=>r[c])));
+  const rk=p.rk.length?`<table class="rk num"><tr><th>순위</th><th>닉네임</th><th>Lv</th>${S.map(s=>`<th>${s.slice(0,2)}</th>`).join('')}</tr>${p.rk.map((r,i)=>`<tr><td><span class="medal m${Math.min(i+1,4)}">${i+1}</span></td><td>${esc(r[0])}</td><td>${r[1]}</td>${r.slice(2).map((x,j)=>`<td${x===mx[j]?' class="hi"':''}>${x}</td>`).join('')}</tr>`).join('')}</table>`:'<div class="mut">랭킹 정보 없음</div>';
+  const rd=ridersOf(p.id);
+  $('#detail').innerHTML=`<div class="head">${img(p,'hero')}<div><h2 class="name">${esc(p.n)}</h2><div class="chips">${attrs(p.attr)}<span class="chip2">획득 · ${esc(p.acq)}</span><span class="chip2">탑승 ${p.ride?'가능':'불가'}</span>${p.sg?`<span class="chip2">판매 · ${p.sg}</span>`:''}<a class="chip2" style="color:#8cc0ff" href="${esc(p.url)}" target="_blank" rel="noopener">원문</a></div></div><div class="total"><div class="l">총성장률</div><div class="v num">${p.tg}</div></div></div>
+  <div class="stats">${stats}</div>
+  <div class="pair">
+    <div class="box"><h3>현재 랭킹 TOP ${p.rk.length||3}</h3>${rk}</div>
+    <div class="box" id="proj"><h3>150레벨 예상 스탯</h3>
+      <div class="pj"><div><label for="pl">현재 레벨</label><input id="pl" type="number" inputmode="numeric" min="1" max="150" placeholder="1~150" value="${projLv}"></div>${S.map((s,i)=>`<div><label for="ps${i}">현재 ${s.slice(0,2)}</label><input id="ps${i}" type="number" inputmode="numeric" min="0" placeholder="${s.slice(0,2)}"></div>`).join('')}</div>
+      <div id="pr"></div></div>
+  </div>
+  <div class="riders"><span class="lab">탑승 가능 캐릭터</span>${p.ride?(rd.length?rd.map(c=>`<button class="pill" data-ride="${esc(c)}">${esc(c)}</button>`).join(''):'<span class="mut">탑승 캐릭터 정보 없음(이름 불일치 가능)</span>'):'<span class="mut">탑승 불가 펫</span>'}</div>`}
+{const _r=renderDetail;renderDetail=function(){_r();drawProj()}}
+$('#detail').addEventListener('input',e=>{if(e.target.closest('#proj'))drawProj()});
+function run(){results=find($('#q').value).slice(0,50);sel=results.length?results[0].id:null;renderList();renderDetail()}
+$('#q').oninput=run;
+$('#list').onclick=e=>{const b=e.target.closest('.item');if(!b)return;sel=+b.dataset.id;renderList();renderDetail()};
+$('#detail').onclick=e=>{const b=e.target.closest('[data-ride]');if(!b)return;cur=b.dataset.ride;$('#t2').click()};
+renderDetail();
+let cur=null;
+$('#chars').innerHTML=Object.keys(CH).map(c=>`<button class="chip" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+$('#chars').onclick=e=>{const c=e.target.dataset.c;if(!c)return;cur=cur===c?null:c;draw2()};
+$('#q2').oninput=()=>{cur=null;draw2()};
+function pill(p){return `<button class="pill" data-jump="${p.id}">${esc(p.n)}${dup[p.n]>1?'#'+p.id:''}</button>`}
+$('#r2').onclick=e=>{const j=e.target.closest('[data-jump]');if(j){jump(+j.dataset.jump);return}const r=e.target.closest('[data-char]');if(r){cur=r.dataset.char;draw2()}};
+function jump(id){$('#t1').click();$('#q').value=byId[id].n;results=find(byId[id].n).slice(0,50);sel=id;renderList();renderDetail()}
+function draw2(){
+  document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.c===cur));
+  const q=$('#q2').value.trim();let h='';
+  const un=c=>CH[c].un.map(n=>`<span class="pill warn" title="펫 정보에서 이름을 찾지 못함">${esc(n)} (미매칭)</span>`).join('');
+  if(cur){const c=CH[cur];h+=`<div class="card"><b>${esc(cur)}</b> <span class="tag">탑승 가능 펫 ${c.ids.length+c.un.length}종</span>${c.note?`<div class="tag">${esc(c.note)}</div>`:''}<div class="pills">${c.ids.flat().map(i=>pill(byId[i])).join('')}${un(cur)}</div></div>`}
+  else if(q){
+    const cs=Object.keys(CH).filter(c=>c.includes(q));
+    h+=cs.map(c=>`<div class="card"><b>${esc(c)}</b> <span class="tag">${CH[c].ids.length+CH[c].un.length}종</span><div class="pills">${CH[c].ids.flat().map(i=>pill(byId[i])).join('')}${un(c)}</div></div>`).join('');
+    h+=find(q).slice(0,50).map(p=>{const rd=ridersOf(p.id);return `<div class="card"><b>${esc(p.n)}</b> <span class="tag">#${p.id}${dup[p.n]>1?' · 동명 '+dup[p.n]+'종(구분 불가)':''}</span><div class="pills">${rd.length?rd.map(c=>`<button class="pill" data-char="${esc(c)}">${esc(c)}</button>`).join(''):'<span class="mut">탑승 가능 캐릭터 정보 없음</span>'}</div></div>`}).join('');
+  }
+  $('#r2').innerHTML=h}
+$('#t1').onclick=()=>{$('#v1').hidden=false;$('#v2').hidden=true;$('#t1').className='on';$('#t2').className=''};
+$('#t2').onclick=()=>{$('#v1').hidden=true;$('#v2').hidden=false;$('#t2').className='on';$('#t1').className='';draw2()};
+</script></body></html>
