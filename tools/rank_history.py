@@ -97,8 +97,33 @@ def diff(old, new, pets):
         for nick, (orank, orow) in om.items():
             if nick not in nm:
                 ev.append({"type": "exit", "nick": nick, "rank_from": orank, "from": row_dict(orow)})
+        # 스탯(레벨 포함)이 완전히 같은데 닉네임만 바뀐 이탈/진입 쌍 = 펫 주인이 바뀐 것
+        same = lambda a, b: all(a[k] == b[k] for k in ("lv",) + STATS)
+        exits = [e for e in ev if e["type"] == "exit"]
+        enters = [e for e in ev if e["type"] == "enter"]
+        for x in exits:
+            y = next((y for y in enters if same(x["from"], y["to"])), None)
+            if y is None:
+                continue
+            enters.remove(y)
+            ev.remove(x)
+            ev.remove(y)
+            ev.append({"type": "owner_change", "from_nick": x["nick"], "to_nick": y["nick"],
+                       "rank_from": x["rank_from"], "rank_to": y["rank"],
+                       "stats": {k: x["from"][k] for k in ("lv",) + STATS}})
         if ev:
             out.append({"id": p["id"], "name": p["name"], "before": o, "after": n, "events": ev})
+    # 같은 (이전 닉네임 -> 새 닉네임) 쌍이 여러 펫에서 동시에 나오면 닉네임 변경일 가능성이 있다
+    cnt = {}
+    for ch in out:
+        for e in ch["events"]:
+            if e["type"] == "owner_change":
+                k = (e["from_nick"], e["to_nick"])
+                cnt[k] = cnt.get(k, 0) + 1
+    for ch in out:
+        for e in ch["events"]:
+            if e["type"] == "owner_change":
+                e["same_pair_pets"] = cnt[(e["from_nick"], e["to_nick"])]
     return out
 
 
@@ -122,12 +147,33 @@ def update_timeline(snapshot, at):
     jdump(p, tl, separators=(",", ":"))
 
 
+def rebuild_changes():
+    pets = jload(os.path.join(ROOT, "pets_info.json"))["pets"]
+    fs = sorted(f for f in os.listdir(SNAP) if f.endswith(".json"))
+    snaps = [jload(os.path.join(SNAP, f)) for f in fs]
+    idx = [{"file": None, "from": None, "to": snaps[0]["collected_at"], "note": "기준 스냅샷(비교 대상 없음)"}]
+    for f in os.listdir(CHG) if os.path.isdir(CHG) else []:
+        os.remove(os.path.join(CHG, f))
+    for i in range(1, len(snaps)):
+        changes = diff(snaps[i - 1]["rankings"], snaps[i]["rankings"], pets)
+        summ = summarize(changes)
+        jdump(os.path.join(CHG, fs[i]), {"from": snaps[i - 1]["collected_at"], "to": snaps[i]["collected_at"],
+                                         "summary": summ, "pets": changes}, indent=1)
+        idx.append({"file": "changes/" + fs[i], "from": snaps[i - 1]["collected_at"], "to": snaps[i]["collected_at"], **summ})
+        print("재계산:", fs[i], summ)
+    jdump(os.path.join(H, "changes_index.json"), idx, indent=1)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("latest", nargs="?", help="수집한 rankings_latest.json")
     ap.add_argument("--baseline-file", help="기준점으로 쓸 이전 pets_info.json")
     ap.add_argument("--at", help="수집 시각 ISO (예: 2026-10-24T16:40:00+09:00)")
+    ap.add_argument("--rebuild-changes", action="store_true", help="저장된 스냅샷으로 변경 기록 전체를 다시 계산 (판정 규칙이 바뀌었을 때)")
     a = ap.parse_args()
+    if a.rebuild_changes:
+        rebuild_changes()
+        return
     at = a.at or datetime.datetime.now().astimezone().isoformat(timespec="seconds")
     pets_path = os.path.join(ROOT, "pets_info.json")
     cur = jload(pets_path)

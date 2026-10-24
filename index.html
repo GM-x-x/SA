@@ -123,6 +123,7 @@ function evLine(e){
   const d=e.delta?`공${sg(e.delta.atk)} 방${sg(e.delta.def)} 순${sg(e.delta.agi)} 내${sg(e.delta.hp)}`:'';
   switch(e.type){
     case 'level_up':{const x=e.expected_by_growth,pl=e.per_level;return `<b>${esc(e.nick)}</b> Lv${e.lv_from}→${e.lv_to} · ${d}<div class="tag">성장률 기대 공${x.atk} 방${x.def} 순${x.agi} 내${x.hp}${e.levels>1?` · 레벨당 공${pl.atk} 방${pl.def} 순${pl.agi} 내${pl.hp}`:''}${e.rank_from!==e.rank_to?` · 순위 ${e.rank_from}→${e.rank_to}`:''}</div>`}
+    case 'owner_change':{const s=e.stats;return `<b>${esc(e.from_nick)}</b> → <b>${esc(e.to_nick)}</b> 주인 변경 · ${e.rank_to}위 Lv${s.lv} ${st(s)}${e.same_pair_pets>1?`<div class="tag">같은 닉네임 쌍이 ${e.same_pair_pets}마리 펫에서 동시에 발생 (닉네임 변경일 수도 있음)</div>`:''}`}
     case 'enter':return `<b>${esc(e.nick)}</b> 순위권 진입 · ${e.rank}위 Lv${e.to.lv} ${st(e.to)}`;
     case 'exit':return `<b>${esc(e.nick)}</b> 순위권 이탈 · 이전 ${e.rank_from}위 Lv${e.from.lv} ${st(e.from)}`;
     case 'rank_move':return `<b>${esc(e.nick)}</b> 순위 ${e.rank_from}→${e.rank_to}`;
