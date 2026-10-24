@@ -40,9 +40,14 @@ tpl = open(f'{B}/template.html', encoding='utf-8').read()
 J = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':'))
 base = tpl.replace('__PETS__', J(P)).replace('__CHARS__', J(C))
 
-# 공개용: 기록 화면 없음
-public = base.replace('__HIST__', 'null')
+# 공개용: 기록 화면 없음, 로컬 전용 구간(<!--LOCAL-->…<!--/LOCAL-->, /*LOCAL*/…/*/LOCAL*/)은 통째로 제거
+import re
+def strip_local(s):
+    s = re.sub(r'<!--LOCAL-->.*?<!--/LOCAL-->', '', s, flags=re.S)
+    return re.sub(r'/\*LOCAL\*/.*?/\*/LOCAL\*/', '', s, flags=re.S)
+public = strip_local(base).replace('__HIST__', 'null')
 assert '__HIST__' not in public and '"timeline"' not in public
+assert 'nickSearch' not in public and '닉네임 검색' not in public and 'LOCAL' not in public, '공개용에 로컬 전용 코드가 남음'
 open(f'{R}/index.html', 'w', encoding='utf-8').write(public)  # 저장소 루트 = 사이트 첫 화면
 
 # 로컬 전용: 변화 기록 화면 포함 (index.local.html 은 .gitignore 로 저장소에 올라가지 않는다)

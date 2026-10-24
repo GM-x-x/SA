@@ -78,6 +78,8 @@ a{color:#8cc0ff}
 .card b{font-size:16px}.card .pills{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
 #chars{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .q2{margin-bottom:12px}
+.nk th:nth-child(2),.nk td:nth-child(2){text-align:right;font-weight:400}
+.nk tr[data-jump]{cursor:pointer}.nk tr[data-jump]:hover td{background:var(--panel2)}
 .hbtn{padding:4px 12px;border-radius:7px;border:2px solid var(--ac);background:transparent;color:var(--ac);font-size:13px;font-weight:700;font-family:inherit;cursor:pointer}
 .hbtn:hover{background:var(--ac);color:var(--ink)}
 #hp{position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);background:var(--panel);border-left:2px solid var(--ac);overflow:auto;z-index:10;box-shadow:-8px 0 24px rgba(0,0,0,.5)}
@@ -100,6 +102,7 @@ a{color:#8cc0ff}
   <div class="search q2"><label for="q2">검색</label><input id="q2" placeholder="캐릭터 또는 펫 이름" autocomplete="off"></div>
   <div id="r2"></div>
 </div>
+
 </main>
 <aside id="hp" hidden></aside>
 <script>
@@ -196,6 +199,8 @@ function draw2(){
     h+=find(q).slice(0,50).map(p=>{const rd=ridersOf(p.id);return `<div class="card"><b>${esc(p.n)}</b> <span class="tag">#${p.id}${dup[p.n]>1?' · 동명 '+dup[p.n]+'종(구분 불가)':''}</span><div class="pills">${rd.length?rd.map(c=>`<button class="pill" data-char="${esc(c)}">${esc(c)}</button>`).join(''):'<span class="mut">탑승 가능 캐릭터 정보 없음</span>'}</div></div>`}).join('');
   }
   $('#r2').innerHTML=h}
-$('#t1').onclick=()=>{$('#v1').hidden=false;$('#v2').hidden=true;$('#t1').className='on';$('#t2').className=''};
-$('#t2').onclick=()=>{$('#v1').hidden=true;$('#v2').hidden=false;$('#t2').className='on';$('#t1').className='';draw2()};
+function hideV3(){const v=$('#v3');if(v){v.hidden=true;$('#t3').className=''}}
+$('#t1').onclick=()=>{hideV3();$('#v1').hidden=false;$('#v2').hidden=true;$('#t1').className='on';$('#t2').className=''};
+$('#t2').onclick=()=>{hideV3();$('#v1').hidden=true;$('#v2').hidden=false;$('#t2').className='on';$('#t1').className='';draw2()};
+
 </script></body></html>
