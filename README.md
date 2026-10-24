@@ -2,14 +2,15 @@
 
 펫·탑승 검색 앱. 펫 이름 또는 탑승 캐릭터로 검색하고, 펫의 초기 능력치·성장률·현재 랭킹·150레벨 예상 스탯을 한 화면에서 봅니다.
 
-- `app/index.html` : 단일 정적 페이지 (실행 결과물)
+- `index.html` : 단일 정적 페이지 (실행 결과물, `app/build.py`가 생성)
+- `app/index.html` : 옛 주소용 이동 페이지
 - `app/template.html`, `app/build.py` : 페이지 원본과 빌드 스크립트 (`python3 app/build.py`)
 - `pets_info.json` : 펫 685종 데이터 (출처: hwansoo.top 게임정보 > 페트정보)
 - `riding_by_character.json` : 캐릭터별 탑승 목록 (출처: hwansoo.top 게임정보 > 탑승정보)
 - `pet_images/` : 펫 이미지 685개 (`{id 4자리}.{gif|webp}`)
 
 ## 실행
-저장소 루트에서 `python3 -m http.server 8777 --bind 127.0.0.1` 실행 후 http://127.0.0.1:8777/app/index.html
+저장소 루트에서 `python3 -m http.server 8777 --bind 127.0.0.1` 실행 후 http://127.0.0.1:8777/
 
 ## 주의
 - 랭킹 닉네임은 게임 내 공개 랭킹 정보입니다.

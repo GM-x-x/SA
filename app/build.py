@@ -22,7 +22,7 @@ for p in pets:
         g=[p['growth_rates'][x] for x in ('atk','def','agi','hp')], tg=p['total_growth'],
         ride=p['rideable'] == '탑승가능', sg=grade(p['sell_grade']),
         rk=[[e['nick'], e['lv'], e['atk'], e['def'], e['agi'], e['hp']] for e in p['ranking']],
-        img=('../pet_images/' + imgs[k]) if k in imgs else '', ext=p['image'], url=p['url']))
+        img=('pet_images/' + imgs[k]) if k in imgs else '', ext=p['image'], url=p['url']))
 
 C, miss = {}, collections.defaultdict(list)
 for c, v in chars.items():
@@ -39,4 +39,4 @@ print('이미지 누락:', sum(1 for p in P if not p['img']), '/', len(P))
 tpl = open(f'{B}/template.html', encoding='utf-8').read()
 out = tpl.replace('__PETS__', json.dumps(P, ensure_ascii=False, separators=(',', ':'))) \
          .replace('__CHARS__', json.dumps(C, ensure_ascii=False, separators=(',', ':')))
-open(f'{B}/index.html', 'w', encoding='utf-8').write(out)
+open(f'{R}/index.html', 'w', encoding='utf-8').write(out)  # 저장소 루트 = 사이트 첫 화면
