@@ -78,6 +78,8 @@ a{color:#8cc0ff}
 .card b{font-size:16px}.card .pills{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
 #chars{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .q2{margin-bottom:12px}
+.hbtn{padding:4px 12px;border-radius:7px;border:2px solid var(--ac);background:transparent;color:var(--ac);font-size:13px;font-weight:700;font-family:inherit;cursor:pointer}
+.hbtn:hover{background:var(--ac);color:var(--ink)}
 #hp{position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);background:var(--panel);border-left:2px solid var(--ac);overflow:auto;z-index:10;box-shadow:-8px 0 24px rgba(0,0,0,.5)}
 #hp[hidden]{display:none}
 .hh{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:2px solid var(--line);position:sticky;top:0;background:var(--panel)}
@@ -113,7 +115,7 @@ const FB='<div class="ph %C">이미지 없음</div>';
 function img(p,cls){const alt=esc(p.n);return p.img?`<img class="${cls}" alt="${alt}" src="${esc(p.img)}" loading="lazy" onerror="this.onerror=null;this.src='${esc(p.ext)}'">`:`<img class="${cls}" alt="${alt}" src="${esc(p.ext)}" loading="lazy" onerror="this.outerHTML='${FB.replace('%C',cls+' ph')}'">`}
 function attrs(a){const out=[];String(a||'').replace(/([지수화풍])\s*\(Lv\.(\d+)\)/g,(m,e,l)=>{const c=EL[e];out.push(`<span class="chip2" style="background:${c[0]};color:${c[1]};font-weight:700">${e} Lv.${l}</span>`)});return out.join('')||`<span class="chip2">${esc(a||'속성 정보 없음')}</span>`}
 /* 변화 기록 화면: 로컬 빌드(index.local.html)에서만 HIST 가 채워진다 */
-function histBtn(p){if(!HIST)return'';const n=(HIST.events[p.id]||[]).length;return `<span style="flex:1"></span><button class="pill" data-hist="${p.id}">변화 기록 ${n}건</button>`}
+function histBtn(p){if(!HIST)return'';const n=(HIST.events[p.id]||[]).length;return `<button class="hbtn" data-hist="${p.id}">📈 변화 기록 ${n}건</button>`}
 const fmtAt=a=>{const m=String(a).match(/\d+-(\d+)-(\d+)T(\d+):(\d+)/);return m?`${m[1]}-${m[2]} ${m[3]}:${m[4]}`:a};
 const sg=n=>(n>0?'+':'')+n;
 function evLine(e){
@@ -159,7 +161,7 @@ function renderDetail(){
   const mx=[2,3,4,5].map(c=>Math.max(...p.rk.map(r=>r[c])));
   const rk=p.rk.length?`<table class="rk num"><tr><th>순위</th><th>닉네임</th><th>Lv</th>${S.map(s=>`<th>${s.slice(0,2)}</th>`).join('')}</tr>${p.rk.map((r,i)=>`<tr><td><span class="medal m${Math.min(i+1,4)}">${i+1}</span></td><td>${esc(r[0])}</td><td>${r[1]}</td>${r.slice(2).map((x,j)=>`<td${x===mx[j]?' class="hi"':''}>${x}</td>`).join('')}</tr>`).join('')}</table>`:'<div class="mut">랭킹 정보 없음</div>';
   const rd=ridersOf(p.id);
-  $('#detail').innerHTML=`<div class="head">${img(p,'hero')}<div><h2 class="name">${esc(p.n)}</h2><div class="chips">${attrs(p.attr)}<span class="chip2">획득 · ${esc(p.acq)}</span><span class="chip2">탑승 ${p.ride?'가능':'불가'}</span>${p.sg?`<span class="chip2">판매 · ${p.sg}</span>`:''}<a class="chip2" style="color:#8cc0ff" href="${esc(p.url)}" target="_blank" rel="noopener">원문</a></div></div><div class="total"><div class="l">총성장률</div><div class="v num">${p.tg}</div></div></div>
+  $('#detail').innerHTML=`<div class="head">${img(p,'hero')}<div><h2 class="name">${esc(p.n)}</h2><div class="chips">${attrs(p.attr)}<span class="chip2">획득 · ${esc(p.acq)}</span><span class="chip2">탑승 ${p.ride?'가능':'불가'}</span>${p.sg?`<span class="chip2">판매 · ${p.sg}</span>`:''}<a class="chip2" style="color:#8cc0ff" href="${esc(p.url)}" target="_blank" rel="noopener">원문</a>${histBtn(p)}</div></div><div class="total"><div class="l">총성장률</div><div class="v num">${p.tg}</div></div></div>
   <div class="stats">${stats}</div>
   <div class="pair">
     <div class="box"><h3>현재 랭킹 TOP ${p.rk.length||3}</h3>${rk}</div>
@@ -167,7 +169,7 @@ function renderDetail(){
       <div class="pj"><div><label for="pl">현재 레벨</label><input id="pl" type="number" inputmode="numeric" min="1" max="150" placeholder="1~150" value="${projLv}"></div>${S.map((s,i)=>`<div><label for="ps${i}">현재 ${s.slice(0,2)}</label><input id="ps${i}" type="number" inputmode="numeric" min="0" placeholder="${s.slice(0,2)}"></div>`).join('')}</div>
       <div id="pr"></div></div>
   </div>
-  <div class="riders"><span class="lab">탑승 가능 캐릭터</span>${p.ride?(rd.length?rd.map(c=>`<button class="pill" data-ride="${esc(c)}">${esc(c)}</button>`).join(''):'<span class="mut">탑승 캐릭터 정보 없음(이름 불일치 가능)</span>'):'<span class="mut">탑승 불가 펫</span>'}${histBtn(p)}</div>`}
+  <div class="riders"><span class="lab">탑승 가능 캐릭터</span>${p.ride?(rd.length?rd.map(c=>`<button class="pill" data-ride="${esc(c)}">${esc(c)}</button>`).join(''):'<span class="mut">탑승 캐릭터 정보 없음(이름 불일치 가능)</span>'):'<span class="mut">탑승 불가 펫</span>'}</div>`}
 {const _r=renderDetail;renderDetail=function(){_r();drawProj();$('#hp').hidden=true}}
 $('#detail').addEventListener('input',e=>{if(e.target.closest('#proj'))drawProj()});
 function run(){results=find($('#q').value).slice(0,50);sel=results.length?results[0].id:null;renderList();renderDetail()}
