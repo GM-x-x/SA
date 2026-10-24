@@ -1,5 +1,5 @@
 """pets_info.json + riding_by_character.json -> index.html (단일 정적 파일). 원본은 수정하지 않는다.
-랭킹 닉네임(게임 내 공개 닉네임) 포함 -> 사내용으로만 사용하고 외부 배포 금지."""
+랭킹 닉네임(게임 내 공개 닉네임) 포함."""
 import json, os, collections
 B = os.path.dirname(os.path.abspath(__file__)); R = os.path.dirname(B)
 pets = json.load(open(f'{R}/pets_info.json'))['pets']
