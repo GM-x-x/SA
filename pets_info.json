@@ -6,7 +6,7 @@
   "collected": "2026-10-24",
   "count": 712,
   "note": "ranking은 상위 보유자(닉네임, 레벨, 공격력, 방어력, 순발력, 내구력). 게임 내 공개 랭킹 닉네임이며 중복 가능.",
-  "ranking_updated": "2026-11-23"
+  "ranking_updated": "2026-11-24"
  },
  "pets": [
   {
@@ -31,6 +31,14 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
+     "nick": "콜게이",
+     "lv": 140,
+     "atk": 207,
+     "def": 198,
+     "agi": 213,
+     "hp": 1450
+    },
+    {
      "nick": "탭사",
      "lv": 140,
      "atk": 205,
@@ -45,14 +53,6 @@
      "def": 199,
      "agi": 212,
      "hp": 1439
-    },
-    {
-     "nick": "콜라",
-     "lv": 137,
-     "atk": 202,
-     "def": 194,
-     "agi": 208,
-     "hp": 1419
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/e571c5615b33d4201bef5e22a94ca2b4_Ya5v2Pzl_8176105725bf2819b6cf344b903b2246bf168abd.gif",
@@ -129,7 +129,7 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
-     "nick": "시난주",
+     "nick": "별비",
      "lv": 140,
      "atk": 224,
      "def": 238,
@@ -194,7 +194,7 @@
      "hp": 1389
     },
     {
-     "nick": "은쪽이",
+     "nick": "유상철",
      "lv": 140,
      "atk": 233,
      "def": 200,
@@ -244,11 +244,11 @@
     },
     {
      "nick": "팡팡",
-     "lv": 138,
-     "atk": 232,
-     "def": 246,
-     "agi": 205,
-     "hp": 1323
+     "lv": 140,
+     "atk": 235,
+     "def": 250,
+     "agi": 208,
+     "hp": 1341
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/01325dc66634aaa796b20ba2d9d08d74_SzXDdLK8_6e9bd6e2f54db3c1c0bfd3e22bfe40d3dccbeb27.gif",
@@ -617,7 +617,32 @@
    "total_growth": 4.862,
    "rideable": "탑승불가",
    "sell_grade": "일반등급",
-   "ranking": [],
+   "ranking": [
+    {
+     "nick": "짠",
+     "lv": 140,
+     "atk": 241,
+     "def": 213,
+     "agi": 242,
+     "hp": 1372
+    },
+    {
+     "nick": "아시아",
+     "lv": 140,
+     "atk": 242,
+     "def": 213,
+     "agi": 241,
+     "hp": 1370
+    },
+    {
+     "nick": "경웅",
+     "lv": 140,
+     "atk": 240,
+     "def": 214,
+     "agi": 240,
+     "hp": 1373
+    }
+   ],
    "image": "https://www.hwansoo.top/data/file/pets/93dd7ef571ef9eea5ac5db9606314142_JINyLjkz_bda73fb8cb0f85b1d94d7d4776a78585c322540b.webp",
    "url": "https://www.hwansoo.top/bbs/board.php?bo_table=pets&wr_id=18"
   },
@@ -1436,11 +1461,11 @@
     },
     {
      "nick": "비비안",
-     "lv": 120,
-     "atk": 209,
-     "def": 206,
-     "agi": 143,
-     "hp": 1249
+     "lv": 127,
+     "atk": 221,
+     "def": 218,
+     "agi": 152,
+     "hp": 1321
     },
     {
      "nick": "묵훈",
@@ -2620,11 +2645,11 @@
     },
     {
      "nick": "lancer",
-     "lv": 135,
-     "atk": 204,
-     "def": 213,
-     "agi": 240,
-     "hp": 1129
+     "lv": 137,
+     "atk": 207,
+     "def": 217,
+     "agi": 243,
+     "hp": 1146
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/e71549095ae03c5a3acda5e10be2b685_DbEPrNWk_bd201a983d817f726543365c96eeac60c7735494.webp",
@@ -2751,11 +2776,11 @@
    "ranking": [
     {
      "nick": "Lilith",
-     "lv": 146,
-     "atk": 285,
-     "def": 279,
-     "agi": 162,
-     "hp": 1526
+     "lv": 147,
+     "atk": 287,
+     "def": 281,
+     "agi": 163,
+     "hp": 1536
     },
     {
      "nick": "달콩레나",
@@ -2913,7 +2938,7 @@
      "hp": 1448
     },
     {
-     "nick": "요다",
+     "nick": "헥터",
      "lv": 140,
      "atk": 290,
      "def": 236,
@@ -4759,11 +4784,11 @@
     },
     {
      "nick": "라면세트",
-     "lv": 137,
-     "atk": 251,
-     "def": 177,
-     "agi": 96,
-     "hp": 1954
+     "lv": 139,
+     "atk": 255,
+     "def": 179,
+     "agi": 98,
+     "hp": 1981
     },
     {
      "nick": "아메리카",
@@ -5649,11 +5674,11 @@
     },
     {
      "nick": "댕당산의원시인",
-     "lv": 122,
-     "atk": 195,
-     "def": 228,
-     "agi": 151,
-     "hp": 1215
+     "lv": 124,
+     "atk": 198,
+     "def": 231,
+     "agi": 153,
+     "hp": 1235
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/4f1d386bbbfdd91ddddc81dc6878bde0_o2YqmDja_a0e9069665bd307979966cd5b44a0aa0429e7ded.webp",
@@ -5959,11 +5984,11 @@
     },
     {
      "nick": "이라",
-     "lv": 125,
-     "atk": 247,
-     "def": 207,
-     "agi": 166,
-     "hp": 1262
+     "lv": 126,
+     "atk": 249,
+     "def": 209,
+     "agi": 167,
+     "hp": 1271
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/20fedbb2a645332bca7c80df21d11f7b_A8pc5a3n_48104bf26b06a869768af9625b623358df42c008.gif",
@@ -6766,20 +6791,20 @@
    "sell_grade": "일반 등급",
    "ranking": [
     {
-     "nick": "봉춘",
-     "lv": 149,
-     "atk": 300,
-     "def": 180,
-     "agi": 261,
-     "hp": 1500
+     "nick": "여름",
+     "lv": 150,
+     "atk": 304,
+     "def": 182,
+     "agi": 263,
+     "hp": 1504
     },
     {
-     "nick": "여름",
-     "lv": 147,
-     "atk": 298,
-     "def": 178,
-     "agi": 258,
-     "hp": 1475
+     "nick": "봉춘",
+     "lv": 150,
+     "atk": 302,
+     "def": 181,
+     "agi": 262,
+     "hp": 1509
     },
     {
      "nick": "너틸러스",
@@ -6824,11 +6849,11 @@
     },
     {
      "nick": "주먹왕",
-     "lv": 129,
-     "atk": 306,
-     "def": 159,
-     "agi": 192,
-     "hp": 1309
+     "lv": 131,
+     "atk": 311,
+     "def": 161,
+     "agi": 195,
+     "hp": 1329
     },
     {
      "nick": "썬더칩",
@@ -7241,11 +7266,11 @@
    "ranking": [
     {
      "nick": "Death",
-     "lv": 147,
-     "atk": 333,
-     "def": 190,
-     "agi": 248,
-     "hp": 1650
+     "lv": 149,
+     "atk": 338,
+     "def": 193,
+     "agi": 251,
+     "hp": 1672
     },
     {
      "nick": "깨스킴",
@@ -8269,7 +8294,7 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
-     "nick": "빡빡이",
+     "nick": "르니",
      "lv": 150,
      "atk": 333,
      "def": 203,
@@ -8628,12 +8653,12 @@
      "hp": 1505
     },
     {
-     "nick": "남하사",
-     "lv": 126,
+     "nick": "마징거777",
+     "lv": 127,
      "atk": 263,
-     "def": 292,
-     "agi": 59,
-     "hp": 1305
+     "def": 288,
+     "agi": 60,
+     "hp": 1359
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/ad5e6299fee1093bd87c1e324466aec1_nzBDQ68K_d245657bcd88d3bfb8a4b005c7b3107592aee081.gif",
@@ -8662,11 +8687,11 @@
    "ranking": [
     {
      "nick": "무키베츠",
-     "lv": 147,
-     "atk": 338,
-     "def": 203,
-     "agi": 218,
-     "hp": 1557
+     "lv": 148,
+     "atk": 340,
+     "def": 205,
+     "agi": 220,
+     "hp": 1568
     },
     {
      "nick": "대퇴사두근",
@@ -9763,7 +9788,7 @@
    "sell_grade": "일반 등",
    "ranking": [
     {
-     "nick": "도사",
+     "nick": "광개토",
      "lv": 150,
      "atk": 370,
      "def": 190,
@@ -9836,7 +9861,7 @@
    "sell_grade": "일반 등",
    "ranking": [
     {
-     "nick": "리본즈",
+     "nick": "별비",
      "lv": 142,
      "atk": 301,
      "def": 169,
@@ -11208,7 +11233,7 @@
      "hp": 1559
     },
     {
-     "nick": "베리핫게이",
+     "nick": "랑방",
      "lv": 150,
      "atk": 330,
      "def": 184,
@@ -11592,7 +11617,7 @@
      "hp": 1503
     },
     {
-     "nick": "유원",
+     "nick": "블루밍",
      "lv": 150,
      "atk": 310,
      "def": 224,
@@ -11941,6 +11966,14 @@
      "def": 190,
      "agi": 267,
      "hp": 1529
+    },
+    {
+     "nick": "유정복",
+     "lv": 128,
+     "atk": 277,
+     "def": 162,
+     "agi": 217,
+     "hp": 1336
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/78535cd5cdac6eb7226f184490e65221_ulVCEj8M_d3344b3268b0f2858329f1a67fd01108371a740c.gif",
@@ -12761,7 +12794,7 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
-     "nick": "빡빡이",
+     "nick": "르니",
      "lv": 150,
      "atk": 333,
      "def": 203,
@@ -13831,11 +13864,11 @@
     },
     {
      "nick": "dawoon123",
-     "lv": 146,
-     "atk": 351,
-     "def": 215,
-     "agi": 218,
-     "hp": 1521
+     "lv": 147,
+     "atk": 353,
+     "def": 217,
+     "agi": 219,
+     "hp": 1530
     },
     {
      "nick": "강",
@@ -14541,11 +14574,11 @@
     },
     {
      "nick": "주먹왕",
-     "lv": 129,
-     "atk": 306,
-     "def": 159,
-     "agi": 192,
-     "hp": 1309
+     "lv": 131,
+     "atk": 311,
+     "def": 161,
+     "agi": 195,
+     "hp": 1329
     },
     {
      "nick": "썬더칩",
@@ -15094,6 +15127,14 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
+     "nick": "Beelzebub",
+     "lv": 140,
+     "atk": 315,
+     "def": 220,
+     "agi": 187,
+     "hp": 1478
+    },
+    {
      "nick": "영실",
      "lv": 140,
      "atk": 315,
@@ -15108,14 +15149,6 @@
      "def": 218,
      "agi": 187,
      "hp": 1496
-    },
-    {
-     "nick": "평양박치기",
-     "lv": 140,
-     "atk": 310,
-     "def": 216,
-     "agi": 187,
-     "hp": 1498
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/5c4eb7b3c715198694de80efa2fce410_wpvmYfTu_c48e772fe6ebc7a58d26a887503e20038a85bf13.gif",
@@ -15247,6 +15280,14 @@
      "def": 215,
      "agi": 178,
      "hp": 1459
+    },
+    {
+     "nick": "크오르",
+     "lv": 121,
+     "atk": 285,
+     "def": 204,
+     "agi": 170,
+     "hp": 1404
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/2611118ced7875c0e26376e5e8c5bba6_SHxJbIfp_df16cd29e845e22383dd8a9a8a0951f6422d9372.gif",
@@ -15575,7 +15616,7 @@
      "hp": 1555
     },
     {
-     "nick": "야쓰",
+     "nick": "혈기노",
      "lv": 150,
      "atk": 357,
      "def": 185,
@@ -15965,6 +16006,14 @@
      "def": 197,
      "agi": 216,
      "hp": 1583
+    },
+    {
+     "nick": "이천수",
+     "lv": 123,
+     "atk": 308,
+     "def": 167,
+     "agi": 184,
+     "hp": 1349
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/9a4c314ecf97cb153250ff5f2b2003af_BKktW1jL_3c223dd4f51aa0cd530b3ff84603c1b01b4060ea.gif",
@@ -16090,12 +16139,12 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
-     "nick": "모니곰",
-     "lv": 145,
-     "atk": 341,
-     "def": 221,
-     "agi": 216,
-     "hp": 1755
+     "nick": "강준",
+     "lv": 132,
+     "atk": 303,
+     "def": 205,
+     "agi": 198,
+     "hp": 1557
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/14d2f3b67c39a00590cc2a1e04ea2874_A2GhdfPs_fd9a3b7fc9796f5377bc2d4938c2ced52a01c2e6.gif",
@@ -16336,11 +16385,11 @@
     },
     {
      "nick": "로제",
-     "lv": 127,
-     "atk": 307,
-     "def": 184,
-     "agi": 192,
-     "hp": 1347
+     "lv": 130,
+     "atk": 314,
+     "def": 188,
+     "agi": 196,
+     "hp": 1377
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/10c597da3d7c401c0630401aba35eb50_vaTU8Ae1_2b5a9325c097e8cbe2fe9f1948b3abbaafa2241e.gif",
@@ -16866,7 +16915,7 @@
      "hp": 1662
     },
     {
-     "nick": "블루밍",
+     "nick": "유원",
      "lv": 150,
      "atk": 332,
      "def": 202,
@@ -17201,7 +17250,7 @@
      "hp": 1646
     },
     {
-     "nick": "~뿡이",
+     "nick": "뿡이~",
      "lv": 150,
      "atk": 341,
      "def": 208,
@@ -17765,12 +17814,12 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
-     "nick": "끼얏",
-     "lv": 134,
-     "atk": 304,
-     "def": 134,
-     "agi": 237,
-     "hp": 1377
+     "nick": "빵빠레",
+     "lv": 135,
+     "atk": 306,
+     "def": 135,
+     "agi": 239,
+     "hp": 1387
     },
     {
      "nick": "wind2",
@@ -18108,20 +18157,20 @@
      "hp": 1419
     },
     {
+     "nick": "큐베",
+     "lv": 140,
+     "atk": 319,
+     "def": 197,
+     "agi": 209,
+     "hp": 1431
+    },
+    {
      "nick": "티라노사우르스",
      "lv": 140,
      "atk": 320,
      "def": 199,
      "agi": 201,
      "hp": 1429
-    },
-    {
-     "nick": "촐랭이",
-     "lv": 140,
-     "atk": 321,
-     "def": 198,
-     "agi": 207,
-     "hp": 1379
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/664e976afd3d91f89eff6542700f0c72_EhDS5nfL_a483b5796ce16a4f9bdbffd9bf774ede84595f5c.gif",
@@ -19511,12 +19560,12 @@
      "hp": 1611
     },
     {
-     "nick": "칠성",
+     "nick": "요마",
      "lv": 140,
      "atk": 324,
-     "def": 175,
-     "agi": 238,
-     "hp": 1553
+     "def": 181,
+     "agi": 237,
+     "hp": 1563
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/b8b38883ad20b9ebd6e2bf7614b286a3_JMSWL73h_cb76902058c93e34a035d36580c5da05e6e1c76f.gif",
@@ -20164,20 +20213,20 @@
      "hp": 1554
     },
     {
+     "nick": "诸葛一德JOJOT",
+     "lv": 140,
+     "atk": 344,
+     "def": 208,
+     "agi": 174,
+     "hp": 1537
+    },
+    {
      "nick": "빛",
      "lv": 140,
      "atk": 327,
      "def": 198,
      "agi": 181,
      "hp": 1467
-    },
-    {
-     "nick": "히트맨",
-     "lv": 131,
-     "atk": 324,
-     "def": 199,
-     "agi": 169,
-     "hp": 1476
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/f190cee7934ff85a0d24eb293d99a8c3_F2UaS8by_7267b4bc64c0d36b4c3ce922fc8b72081b136be3.webp",
@@ -21100,7 +21149,7 @@
      "hp": 2198
     },
     {
-     "nick": "채채",
+     "nick": "졸려zZ",
      "lv": 150,
      "atk": 325,
      "def": 361,
@@ -21729,7 +21778,7 @@
    "sell_grade": "일반등급",
    "ranking": [
     {
-     "nick": "난쏘곰",
+     "nick": "브리핑",
      "lv": 148,
      "atk": 355,
      "def": 201,
@@ -22063,12 +22112,12 @@
      "hp": 1673
     },
     {
-     "nick": "치킨",
+     "nick": "태촌",
      "lv": 140,
      "atk": 332,
      "def": 202,
      "agi": 215,
-     "hp": 1579
+     "hp": 1584
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/7cb71e8ed5773b012a61857b3c31d06e_J9vGZK8z_6ec1215f19b9b3f81545814a4e81dea02b39659d.gif",
@@ -22452,6 +22501,14 @@
      "def": 182,
      "agi": 267,
      "hp": 1628
+    },
+    {
+     "nick": "카사카",
+     "lv": 145,
+     "atk": 360,
+     "def": 174,
+     "agi": 258,
+     "hp": 1522
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/e765ff717c049f16f7ef74a17e9ac1d1_kDIZcyPf_8cc108b4160bec0ef49ea3d91c42729b1ae6d6fa.webp",
@@ -22675,11 +22732,11 @@
      "hp": 1560
     },
     {
-     "nick": "매혹",
+     "nick": "Poseidon",
      "lv": 150,
-     "atk": 366,
-     "def": 185,
-     "agi": 258,
+     "atk": 364,
+     "def": 187,
+     "agi": 259,
      "hp": 1563
     }
    ],
@@ -22855,7 +22912,7 @@
      "hp": 1621
     },
     {
-     "nick": "지우개",
+     "nick": "품바",
      "lv": 148,
      "atk": 361,
      "def": 185,
@@ -22961,7 +23018,7 @@
    "sell_grade": "일반",
    "ranking": [
     {
-     "nick": "마루나래",
+     "nick": "별비",
      "lv": 140,
      "atk": 334,
      "def": 174,
@@ -23636,7 +23693,7 @@
      "hp": 1566
     },
     {
-     "nick": "빌리게이",
+     "nick": "준게이",
      "lv": 150,
      "atk": 379,
      "def": 173,
@@ -23775,7 +23832,7 @@
      "hp": 1525
     },
     {
-     "nick": "사토루",
+     "nick": "이너니",
      "lv": 141,
      "atk": 316,
      "def": 161,
@@ -23849,7 +23906,7 @@
    "sell_grade": "일반",
    "ranking": [
     {
-     "nick": "고라파덕",
+     "nick": "가영",
      "lv": 150,
      "atk": 375,
      "def": 170,
@@ -24208,7 +24265,7 @@
      "hp": 1679
     },
     {
-     "nick": "김병지",
+     "nick": "오타니쇼헤이",
      "lv": 150,
      "atk": 369,
      "def": 231,
@@ -25724,6 +25781,14 @@
      "def": 155,
      "agi": 313,
      "hp": 1519
+    },
+    {
+     "nick": "주",
+     "lv": 140,
+     "atk": 312,
+     "def": 145,
+     "agi": 297,
+     "hp": 1430
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/d868596cf0ca5de5f71ea550913ce28f_LG0m1DEJ_502d001c196891ec92811e0b0d3033fc29cd038d.webp",
@@ -26004,7 +26069,7 @@
    "sell_grade": "일반",
    "ranking": [
     {
-     "nick": "Iapetus",
+     "nick": "여우",
      "lv": 150,
      "atk": 375,
      "def": 176,
@@ -27254,7 +27319,7 @@
      "hp": 1551
     },
     {
-     "nick": "Iapetus",
+     "nick": "물복이",
      "lv": 150,
      "atk": 331,
      "def": 158,
@@ -27826,7 +27891,7 @@
    "sell_grade": "일반",
    "ranking": [
     {
-     "nick": "오사배",
+     "nick": "오사펫모",
      "lv": 150,
      "atk": 354,
      "def": 289,
@@ -28448,11 +28513,11 @@
     },
     {
      "nick": "잔다르크",
-     "lv": 129,
-     "atk": 328,
-     "def": 216,
-     "agi": 163,
-     "hp": 1655
+     "lv": 133,
+     "atk": 338,
+     "def": 223,
+     "agi": 168,
+     "hp": 1705
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/2293ac14222d2eb327b7a7ac3f1d1dcf_O4xSnXo5_0f0e09c1881a7ee2691f812b9262bbe85f80a0b7.webp",
@@ -28765,11 +28830,11 @@
     },
     {
      "nick": "매혹",
-     "lv": 132,
-     "atk": 326,
-     "def": 180,
-     "agi": 251,
-     "hp": 1449
+     "lv": 139,
+     "atk": 342,
+     "def": 190,
+     "agi": 264,
+     "hp": 1522
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/a6c2104f518c7b9b919f5139e51e20d2_kRgVXovP_1ae38b2e6e0615a932360f1a948565e8e7865295.webp",
@@ -28952,7 +29017,7 @@
      "hp": 1732
     },
     {
-     "nick": "장익훈",
+     "nick": "후니",
      "lv": 150,
      "atk": 328,
      "def": 196,
@@ -28960,7 +29025,7 @@
      "hp": 1734
     },
     {
-     "nick": "이을용",
+     "nick": "설악",
      "lv": 150,
      "atk": 326,
      "def": 196,
@@ -28994,11 +29059,11 @@
    "ranking": [
     {
      "nick": "무키베츠",
-     "lv": 147,
-     "atk": 338,
-     "def": 203,
-     "agi": 218,
-     "hp": 1557
+     "lv": 148,
+     "atk": 340,
+     "def": 205,
+     "agi": 220,
+     "hp": 1568
     },
     {
      "nick": "대퇴사두근",
@@ -29050,7 +29115,7 @@
      "hp": 1659
     },
     {
-     "nick": "수덜",
+     "nick": "숙자",
      "lv": 150,
      "atk": 358,
      "def": 230,
@@ -29189,7 +29254,7 @@
    "sell_grade": "일반",
    "ranking": [
     {
-     "nick": "단",
+     "nick": "유원",
      "lv": 150,
      "atk": 363,
      "def": 223,
@@ -29239,11 +29304,11 @@
    "ranking": [
     {
      "nick": "Lilith",
-     "lv": 149,
-     "atk": 348,
-     "def": 204,
-     "agi": 222,
-     "hp": 1550
+     "lv": 150,
+     "atk": 350,
+     "def": 205,
+     "agi": 224,
+     "hp": 1560
     },
     {
      "nick": "엥문",
@@ -29295,7 +29360,7 @@
      "hp": 1880
     },
     {
-     "nick": "Iapetus",
+     "nick": "치우",
      "lv": 150,
      "atk": 369,
      "def": 236,
@@ -29687,20 +29752,20 @@
      "hp": 1596
     },
     {
+     "nick": "베지터",
+     "lv": 149,
+     "atk": 345,
+     "def": 227,
+     "agi": 251,
+     "hp": 1593
+    },
+    {
      "nick": "댐비시지",
      "lv": 150,
      "atk": 347,
      "def": 227,
      "agi": 253,
      "hp": 1574
-    },
-    {
-     "nick": "general90",
-     "lv": 148,
-     "atk": 343,
-     "def": 225,
-     "agi": 249,
-     "hp": 1583
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/74b49a09391977f64898750b02d9c633_Xp2GbZK9_3c125da86bf83a5c56df772ea011d1475b2b43d7.webp",
@@ -30160,7 +30225,7 @@
      "hp": 1695
     },
     {
-     "nick": "뼈짝",
+     "nick": "뼈찜",
      "lv": 150,
      "atk": 341,
      "def": 194,
@@ -30194,11 +30259,11 @@
    "ranking": [
     {
      "nick": "Rose게이",
-     "lv": 126,
-     "atk": 267,
-     "def": 162,
-     "agi": 217,
-     "hp": 1405
+     "lv": 129,
+     "atk": 274,
+     "def": 166,
+     "agi": 222,
+     "hp": 1438
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/1ba6a9e565417644855cc6f0b70d88cc_f1uAzTo3_aec9d2de351850fc96ab44f1bd56c09680a7d81d.webp",
@@ -30234,7 +30299,7 @@
      "hp": 1641
     },
     {
-     "nick": "아따",
+     "nick": "맘마",
      "lv": 150,
      "atk": 363,
      "def": 217,
@@ -30439,11 +30504,11 @@
     },
     {
      "nick": "척준경",
-     "lv": 130,
-     "atk": 283,
-     "def": 172,
-     "agi": 238,
-     "hp": 1351
+     "lv": 136,
+     "atk": 296,
+     "def": 179,
+     "agi": 249,
+     "hp": 1410
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/3546a0ae9cd66de3c6ac36a78cb7cc6d_NPQjqRk6_6fe4e20f43a157de21304b3450e5374239e18b9a.webp",
@@ -30479,20 +30544,20 @@
      "hp": 1535
     },
     {
+     "nick": "축축",
+     "lv": 137,
+     "atk": 320,
+     "def": 175,
+     "agi": 238,
+     "hp": 1425
+    },
+    {
      "nick": "Artemis",
      "lv": 134,
      "atk": 315,
      "def": 172,
      "agi": 233,
      "hp": 1388
-    },
-    {
-     "nick": "축축",
-     "lv": 133,
-     "atk": 311,
-     "def": 170,
-     "agi": 231,
-     "hp": 1385
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/cbe53064142b79b597525595e57c7657_MUCEYg2D_f08ff5bc829953c7c0e7317b05052c96445bd4e7.webp",
@@ -31558,7 +31623,7 @@
      "hp": 1687
     },
     {
-     "nick": "Ares",
+     "nick": "Nemesis",
      "lv": 150,
      "atk": 370,
      "def": 185,
@@ -31589,7 +31654,32 @@
    "total_growth": 5.313,
    "rideable": "탑승불가",
    "sell_grade": "일반",
-   "ranking": [],
+   "ranking": [
+    {
+     "nick": "Artemis",
+     "lv": 150,
+     "atk": 366,
+     "def": 188,
+     "agi": 265,
+     "hp": 1623
+    },
+    {
+     "nick": "나폴레옹",
+     "lv": 150,
+     "atk": 364,
+     "def": 189,
+     "agi": 267,
+     "hp": 1618
+    },
+    {
+     "nick": "묵야",
+     "lv": 150,
+     "atk": 365,
+     "def": 188,
+     "agi": 264,
+     "hp": 1617
+    }
+   ],
    "image": "https://www.hwansoo.top/data/file/pets/47f7ae568d98b6cb2779ae074a5e9f54_OHI7k6zS_359d8f1e824be6227ca54592f5f02c912b786f84.webp",
    "url": "https://www.hwansoo.top/bbs/board.php?bo_table=pets&wr_id=947"
   },
@@ -32040,11 +32130,11 @@
     },
     {
      "nick": "Herakles",
-     "lv": 148,
-     "atk": 366,
-     "def": 157,
-     "agi": 277,
-     "hp": 1573
+     "lv": 149,
+     "atk": 368,
+     "def": 158,
+     "agi": 279,
+     "hp": 1583
     },
     {
      "nick": "빌리게이",
@@ -32088,7 +32178,7 @@
      "hp": 1714
     },
     {
-     "nick": "Herakles",
+     "nick": "Nemesis",
      "lv": 150,
      "atk": 364,
      "def": 198,
@@ -32186,7 +32276,7 @@
      "hp": 1498
     },
     {
-     "nick": "춘송",
+     "nick": "박시탈",
      "lv": 150,
      "atk": 336,
      "def": 203,
@@ -32332,20 +32422,12 @@
      "hp": 1564
     },
     {
-     "nick": "밀",
+     "nick": "전요환목사",
      "lv": 147,
      "atk": 329,
      "def": 175,
      "agi": 292,
      "hp": 1532
-    },
-    {
-     "nick": "팡야",
-     "lv": 131,
-     "atk": 296,
-     "def": 155,
-     "agi": 258,
-     "hp": 1373
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/20b26295bc47855cae96d050f4024718_klnjGyfR_6a5822d2cd1bb742780b1a6a9afbf9491c1ca1ea.webp",
@@ -32431,19 +32513,19 @@
     },
     {
      "nick": "천지인",
-     "lv": 147,
-     "atk": 334,
-     "def": 381,
-     "agi": 73,
-     "hp": 1583
+     "lv": 148,
+     "atk": 337,
+     "def": 383,
+     "agi": 74,
+     "hp": 1594
     },
     {
      "nick": "야마",
-     "lv": 145,
-     "atk": 331,
-     "def": 376,
+     "lv": 146,
+     "atk": 333,
+     "def": 378,
      "agi": 74,
-     "hp": 1592
+     "hp": 1602
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/664311144506fe0f234a9d971d7948b4_wrintdQG_58dbe0f889a3d4fe983e1cfa09afad8d3ac67105.webp",
@@ -32479,20 +32561,20 @@
      "hp": 1471
     },
     {
+     "nick": "김민정",
+     "lv": 134,
+     "atk": 280,
+     "def": 183,
+     "agi": 250,
+     "hp": 1408
+    },
+    {
      "nick": "키아나",
      "lv": 132,
      "atk": 277,
      "def": 179,
      "agi": 247,
      "hp": 1388
-    },
-    {
-     "nick": "김민정",
-     "lv": 132,
-     "atk": 276,
-     "def": 180,
-     "agi": 246,
-     "hp": 1387
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/20b26295bc47855cae96d050f4024718_fDhmLegN_b7a6265983a6a83cf7918e60aa1272b57d00d4d6.webp",
@@ -32536,12 +32618,12 @@
      "hp": 1770
     },
     {
-     "nick": "돌격스톤",
+     "nick": "비숑",
      "lv": 150,
      "atk": 373,
-     "def": 258,
-     "agi": 221,
-     "hp": 1766
+     "def": 256,
+     "agi": 222,
+     "hp": 1771
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/664311144506fe0f234a9d971d7948b4_NOX7Sy1p_d480a2ffe5b0b3c920adacfa1a74f73a8dfb0f63.webp",
@@ -32570,27 +32652,19 @@
    "ranking": [
     {
      "nick": "파탄",
-     "lv": 148,
-     "atk": 378,
-     "def": 211,
-     "agi": 257,
-     "hp": 1651
-    },
-    {
-     "nick": "Artemis",
-     "lv": 143,
-     "atk": 369,
-     "def": 204,
-     "agi": 249,
-     "hp": 1598
+     "lv": 150,
+     "atk": 382,
+     "def": 214,
+     "agi": 261,
+     "hp": 1672
     },
     {
      "nick": "차코차코",
-     "lv": 139,
-     "atk": 357,
-     "def": 198,
-     "agi": 242,
-     "hp": 1524
+     "lv": 143,
+     "atk": 367,
+     "def": 203,
+     "agi": 248,
+     "hp": 1566
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/664311144506fe0f234a9d971d7948b4_u7fLV5KH_ed10e5c92669bdb963f87f011100270a53ee86d8.webp",
@@ -32660,19 +32734,19 @@
     },
     {
      "nick": "나폴레옹",
-     "lv": 135,
-     "atk": 301,
-     "def": 148,
-     "agi": 303,
-     "hp": 1406
+     "lv": 140,
+     "atk": 311,
+     "def": 153,
+     "agi": 314,
+     "hp": 1455
     },
     {
      "nick": "아이찡",
-     "lv": 135,
-     "atk": 298,
-     "def": 149,
-     "agi": 302,
-     "hp": 1400
+     "lv": 139,
+     "atk": 307,
+     "def": 151,
+     "agi": 310,
+     "hp": 1448
     }
    ],
    "image": "https://www.hwansoo.top/data/file/pets/664311144506fe0f234a9d971d7948b4_OWI94RCh_315d9c4cd4e571722edb21998cd68246d88d720c.webp",
